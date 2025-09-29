@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Support - ETranslate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        main {
+            margin-top: 80px;
+            padding: 2rem 0;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            background: white;
+            padding: 4rem 0;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+            text-align: center;
+        }
+        
+        .faq-section {
+            margin-bottom: 3rem;
+        }
+        
+        .faq-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #667eea;
+        }
+        
+        .faq-item {
+            background: #f8f9fa;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background: #667eea;
+            color: white;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .faq-question:hover {
+            background: #5a6fd8;
+        }
+        
+        .faq-answer {
+            padding: 1.5rem;
+            display: none;
+            background: white;
+        }
+        
+        .faq-answer.active {
+            display: block;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 3rem;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .contact-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .contact-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-item p {
+            opacity: 0.9;
+        }
+        
+        .contact-item a {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #667eea;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">ETranslate</div>
+            <ul class="nav-links">
+                <li><a href="index-en.html">Home</a></li>
+                <li><a href="index-en.html#features">Features</a></li>
+                <li><a href="index-en.html#pricing">Pricing</a></li>
+                <li><a href="support-en.html">Support</a></li>
+                <li><a href="privacy-en.html">Privacy Policy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Technical Support</h1>
+                <p>We're here to help you anytime</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+                
+                <div class="faq-section">
+                    <h3>Installation & Setup</h3>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: How to install ETranslate?
+                        </div>
+                        <div class="faq-answer">
+                            A: You can download ETranslate from the Mac App Store. After installation, the app will automatically start a 3-day free trial when launched for the first time.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: How to set up hotkeys?
+                        </div>
+                        <div class="faq-answer">
+                            A: Open ETranslate, go to "Preferences" > "Hotkeys", you can customize the hotkey combination for screenshot translation.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: What permissions does the app need?
+                        </div>
+                        <div class="faq-answer">
+                            A: ETranslate needs screen recording permission for screenshot translation and network permission to access translation services. We do not collect your personal data.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-section">
+                    <h3>Feature Usage</h3>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: How to use the screenshot translation feature?
+                        </div>
+                        <div class="faq-answer">
+                            A: Press the set hotkey (default Cmd+Shift+T), select the area to translate, and the app will automatically recognize text and translate it.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: What languages are supported?
+                        </div>
+                        <div class="faq-answer">
+                            A: We support 20+ languages, including Chinese, English, Japanese, Korean, French, German, Spanish and other mainstream languages.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: What's the difference between AI translation and regular translation?
+                        </div>
+                        <div class="faq-answer">
+                            A: AI translation uses advanced models like ChatGPT and DeepSeek, providing more accurate and natural translation results, especially suitable for complex contexts.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-section">
+                    <h3>Subscription & Payment</h3>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: How long is the free trial period?
+                        </div>
+                        <div class="faq-answer">
+                            A: New users get a 3-day full-feature free trial. During the trial period, you can experience all features without any restrictions.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: How to cancel subscription?
+                        </div>
+                        <div class="faq-answer">
+                            A: You can cancel your subscription in the Mac App Store's "Subscriptions" management, or through System Preferences > Apple ID > Media & Purchases.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: Can I get a refund after subscription?
+                        </div>
+                        <div class="faq-answer">
+                            A: According to App Store policy, you can apply for a refund within 48 hours of purchase. Please apply through the App Store's "Report a Problem" feature.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-section">
+                    <h3>Troubleshooting</h3>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: What to do if the app won't start?
+                        </div>
+                        <div class="faq-answer">
+                            A: Please check if your system version meets the requirements (macOS 10.15+), restart the app, or try reinstalling. If the problem persists, please contact technical support.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: What to do if translation results are inaccurate?
+                        </div>
+                        <div class="faq-answer">
+                            A: You can try switching to different translation engines or use the AI translation feature. Make sure the selected text is clear and readable, avoid blurry or tilted text.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: What to do if hotkeys don't work?
+                        </div>
+                        <div class="faq-answer">
+                            A: Check if other apps are using the same hotkey combination, try changing the hotkey settings, or restart the app.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <div class="container">
+                <h3>Contact Us</h3>
+                <p>If your question is not found in the FAQ, please feel free to contact us</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h4>📧 Email Support</h4>
+                        <p>Send email to <a href="mailto:dabufan@gmail.com">dabufan@gmail.com</a></p>
+                        <p>We will reply within 24 hours</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>💬 Online Feedback</h4>
+                        <p>Through the "Feedback" feature in the app</p>
+                        <p>Send problem reports directly</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>🕒 Service Hours</h4>
+                        <p>Monday to Friday 9:00-18:00</p>
+                        <p>Holiday responses may be delayed</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="index-en.html">Home</a>
+                <a href="support-en.html">Support</a>
+                <a href="privacy-en.html">Privacy Policy</a>
+                <a href="mailto:dabufan@gmail.com">Contact Us</a>
+            </div>
+            <p>&copy; 2025 ETranslate. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const isActive = answer.classList.contains('active');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Toggle current FAQ
+            if (!isActive) {
+                answer.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

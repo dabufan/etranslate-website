@@ -257,47 +257,55 @@
             }
         }
         
+        main {
+            margin-top: 80px;
+            padding: 2rem 0;
+        }
+        
         .hero {
-            padding: 120px 0 80px;
             text-align: center;
+            padding: 4rem 0;
             color: white;
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
             font-weight: 700;
         }
         
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.9;
         }
         
         .cta-button {
             display: inline-block;
-            background: white;
-            color: #667eea;
+            background: #ff6b6b;
+            color: white;
             padding: 1rem 2rem;
-            border-radius: 50px;
             text-decoration: none;
+            border-radius: 50px;
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
         }
         
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
         }
         
         .features {
-            padding: 80px 0;
             background: white;
+            padding: 4rem 0;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
         
-        .section-title {
+        .features h2 {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
@@ -308,15 +316,15 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            margin-top: 2rem;
         }
         
         .feature-card {
-            background: white;
+            background: #f8f9fa;
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s;
         }
         
         .feature-card:hover {
@@ -337,6 +345,57 @@
         .feature-card p {
             color: #666;
             line-height: 1.6;
+        }
+        
+        .pricing {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 4rem 0;
+            margin: 2rem 0;
+            border-radius: 20px;
+            color: white;
+        }
+        
+        .pricing h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .pricing-card.featured {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #ff6b6b;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .price-period {
+            font-size: 1rem;
+            opacity: 0.8;
         }
         
         footer {
@@ -361,6 +420,24 @@
         
         .footer-links a:hover {
             color: #667eea;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -387,44 +464,95 @@
         <section class="hero">
             <div class="container">
                 <h1>ETranslate</h1>
-                <p>Break through copy restrictions, translate with one click selection</p>
-                <a href="#features" class="cta-button">Learn More</a>
+                <p><strong>E</strong>asy <strong>Translate</strong> - Break through copy restrictions, translate with one-click selection</p>
+                <p style="font-size: 1rem; margin-top: 1rem; opacity: 0.8;">When text in software interfaces, web pages, PDFs cannot be copied, ETranslate makes translation incredibly simple</p>
+                <a href="#features" class="cta-button">Try Now</a>
             </div>
         </section>
 
         <section id="features" class="features">
             <div class="container">
-                <h2 class="section-title">Why Choose ETranslate?</h2>
+                <h2>Core Advantages</h2>
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-icon">🎯</div>
-                        <h3>Break Copy Restrictions</h3>
-                        <p>When text in software interfaces, web pages, PDFs cannot be copied, ETranslate uses selection recognition technology to make translation incredibly simple.</p>
+                        <h3>Selection Translation</h3>
+                        <p>Break through copy restrictions, select any area with one click for translation. Supports text in software interfaces, web pages, PDFs that cannot be copied.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">⚡</div>
-                        <h3>One-Click Translation</h3>
-                        <p>Hotkey + selection = instant translation, no need to switch applications. Translation results automatically display near the selected area.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🧠</div>
-                        <h3>Smart Translation Engine</h3>
-                        <p>Multiple engine support: Apple Translation, Google, Microsoft, OpenAI GPT, DeepSeek, Zhipu AI, Qwen. Automatic selection of the best translation engine.</p>
+                        <h3>Ultra-Simple Operation</h3>
+                        <p>Hotkey + selection = instant translation. No need to switch applications, millisecond response, boost work efficiency.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🌍</div>
-                        <h3>20+ Languages</h3>
-                        <p>Support for 20 languages including Chinese, English, Japanese, Korean, French, German, Russian, Spanish, and more.</p>
+                        <h3>Multi-Language Support</h3>
+                        <p>Supports 20+ languages with intelligent recognition and translation, including Chinese, English, Japanese, Korean and other mainstream languages.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3>Smart Engine</h3>
+                        <p>Integrates 7 major translation engines including Apple, Google, Microsoft, OpenAI, DeepSeek, with intelligent switching.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📖</div>
+                        <h3>Bilingual Learning</h3>
+                        <p>Side-by-side display of original and translated text, supports voice reading, helps language learning and pronunciation practice.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🔒</div>
                         <h3>Privacy Protection</h3>
-                        <p>Local translation priority, protecting user data security. API keys stored securely using system-level Keychain.</p>
+                        <p>Local translation priority, data doesn't leave your device, API keys stored securely, protecting user privacy.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" style="background: #f8f9fa;">
+            <div class="container">
+                <h2>Use Cases</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h3>Learning Foreign Languages</h3>
+                        <p>Select foreign software menus, web content, PDF documents for translation. Bilingual comparison mode helps language learning.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🎨</div>
-                        <h3>Personalized Settings</h3>
-                        <p>Theme system, custom hotkeys, hide Dock icon, selection sound effects, and more personalized options.</p>
+                        <div class="feature-icon">💼</div>
+                        <h3>Work Scenarios</h3>
+                        <p>Quickly translate technical documentation, API docs, email content, meeting materials to boost work efficiency.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌐</div>
+                        <h3>Daily Use</h3>
+                        <p>Translate social media content, news articles, product descriptions, travel information. Make language no longer a barrier.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="pricing">
+            <div class="container">
+                <h2>Subscription Plans</h2>
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 3rem; opacity: 0.9;">Make translation simple, make language no longer a barrier</p>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Free Trial</h3>
+                        <div class="price">3 Days</div>
+                        <div class="price-period">Full Feature Experience</div>
+                        <p>Experience selection translation, multi-language support, voice reading and all features</p>
+                    </div>
+                    <div class="pricing-card featured">
+                        <h3>Monthly Subscription</h3>
+                        <div class="price">$2.99</div>
+                        <div class="price-period">per month</div>
+                        <p>Unlimited selection translation, 7 smart engines, privacy protection</p>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Annual Subscription</h3>
+                        <div class="price">$29.99</div>
+                        <div class="price-period">per year</div>
+                        <p>Best value choice, save 17%, essential tool for work and study</p>
                     </div>
                 </div>
             </div>

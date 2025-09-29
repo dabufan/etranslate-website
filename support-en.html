@@ -80,6 +80,36 @@
             color: #667eea;
         }
         
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .language-switcher a {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .language-switcher a.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .language-switcher a:not(.active) {
+            color: #666;
+            border-color: #e0e0e0;
+        }
+        
+        .language-switcher a:not(.active):hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+        
         .nav-links a::after {
             content: '';
             position: absolute;

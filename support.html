@@ -65,6 +65,36 @@
             color: #667eea;
         }
         
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .language-switcher a {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .language-switcher a.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .language-switcher a:not(.active) {
+            color: #666;
+            border-color: #e0e0e0;
+        }
+        
+        .language-switcher a:not(.active):hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+        
         main {
             margin-top: 80px;
             padding: 2rem 0;
@@ -220,6 +250,11 @@
                 display: none;
             }
             
+            .language-switcher a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
+            
             .hero h1 {
                 font-size: 2rem;
             }
@@ -241,6 +276,10 @@
                 <li><a href="support.html">技术支持</a></li>
                 <li><a href="privacy.html">隐私政策</a></li>
             </ul>
+            <div class="language-switcher">
+                <a href="support.html" class="active">中文</a>
+                <a href="support-en.html">English</a>
+            </div>
         </nav>
     </header>
 

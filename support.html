@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技术支持 - ETranslate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        main {
+            margin-top: 80px;
+            padding: 2rem 0;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            background: white;
+            padding: 4rem 0;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+            text-align: center;
+        }
+        
+        .faq-section {
+            margin-bottom: 3rem;
+        }
+        
+        .faq-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #667eea;
+        }
+        
+        .faq-item {
+            background: #f8f9fa;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background: #667eea;
+            color: white;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .faq-question:hover {
+            background: #5a6fd8;
+        }
+        
+        .faq-answer {
+            padding: 1.5rem;
+            display: none;
+            background: white;
+        }
+        
+        .faq-answer.active {
+            display: block;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 3rem;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .contact-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .contact-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-item p {
+            opacity: 0.9;
+        }
+        
+        .contact-item a {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #667eea;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">ETranslate</div>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="index.html#features">功能</a></li>
+                <li><a href="index.html#pricing">定价</a></li>
+                <li><a href="support.html">技术支持</a></li>
+                <li><a href="privacy.html">隐私政策</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>技术支持</h1>
+                <p>我们随时为您提供帮助</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <h2>常见问题</h2>
+                
+                <div class="faq-section">
+                    <h3>安装与设置</h3>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: 如何安装ETranslate？
+                        </div>
+                        <div class="faq-answer">
+                            A: 您可以从Mac App Store下载ETranslate。安装完成后，首次启动应用时会自动开始3天免费试用。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: 如何设置快捷键？
+                        </div>
+                        <div class="faq-answer">
+                            A: 打开ETranslate，进入"偏好设置" > "快捷键"，您可以自定义截图翻译的快捷键组合。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: 应用需要哪些权限？
+                        </div>
+                        <div class="faq-answer">
+                            A: ETranslate需要屏幕录制权限来截图翻译，以及网络权限来访问翻译服务。我们不会收集您的个人数据。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-section">
+                    <h3>功能使用</h3>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: 如何使用截图翻译功能？
+                        </div>
+                        <div class="faq-answer">
+                            A: 按下设置的快捷键（默认Cmd+Shift+T），选择要翻译的区域，应用会自动识别文字并翻译。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: 支持哪些语言？
+                        </div>
+                        <div class="faq-answer">
+                            A: 我们支持20+种语言，包括中文、英文、日文、韩文、法文、德文、西班牙文等主流语言。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: AI翻译和普通翻译有什么区别？
+                        </div>
+                        <div class="faq-answer">
+                            A: AI翻译使用ChatGPT、DeepSeek等先进模型，能提供更准确、更自然的翻译结果，特别适合复杂语境。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-section">
+                    <h3>订阅与付费</h3>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: 免费试用期有多长？
+                        </div>
+                        <div class="faq-answer">
+                            A: 新用户享有3天全功能免费试用，试用期内可以体验所有功能，无任何限制。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: 如何取消订阅？
+                        </div>
+                        <div class="faq-answer">
+                            A: 您可以在Mac App Store的"订阅"管理中取消订阅，或者通过系统偏好设置 > Apple ID > 媒体与购买项目来管理。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: 订阅后可以退款吗？
+                        </div>
+                        <div class="faq-answer">
+                            A: 根据App Store政策，您可以在购买后48小时内申请退款。请通过App Store的"报告问题"功能申请。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-section">
+                    <h3>故障排除</h3>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: 应用无法启动怎么办？
+                        </div>
+                        <div class="faq-answer">
+                            A: 请检查系统版本是否满足要求（macOS 10.15+），重启应用，或尝试重新安装。如果问题持续，请联系技术支持。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: 翻译结果不准确怎么办？
+                        </div>
+                        <div class="faq-answer">
+                            A: 可以尝试切换不同的翻译引擎，或使用AI翻译功能。确保选择的文字清晰可读，避免模糊或倾斜的文字。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            Q: 快捷键不工作怎么办？
+                        </div>
+                        <div class="faq-answer">
+                            A: 检查是否有其他应用占用了相同的快捷键，尝试更改快捷键设置，或重启应用。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <div class="container">
+                <h3>联系我们</h3>
+                <p>如果您的问题没有在常见问题中找到答案，请随时联系我们</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h4>📧 邮箱支持</h4>
+                        <p>发送邮件到 <a href="mailto:dabufan@gmail.com">dabufan@gmail.com</a></p>
+                        <p>我们会在24小时内回复</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>💬 在线反馈</h4>
+                        <p>通过应用内的"反馈"功能</p>
+                        <p>直接发送问题报告</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>🕒 服务时间</h4>
+                        <p>周一至周五 9:00-18:00</p>
+                        <p>节假日可能延迟回复</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="index.html">首页</a>
+                <a href="support.html">技术支持</a>
+                <a href="privacy.html">隐私政策</a>
+                <a href="mailto:dabufan@gmail.com">联系我们</a>
+            </div>
+            <p>&copy; 2025 ETranslate. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const isActive = answer.classList.contains('active');
+            
+            // 关闭所有其他FAQ
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // 切换当前FAQ
+            if (!isActive) {
+                answer.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

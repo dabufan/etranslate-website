@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETranslate - 让翻译变得简单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #667eea;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo::before {
+            content: "🌍";
+            font-size: 1.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #667eea;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .language-switcher a {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .language-switcher a.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .language-switcher a:not(.active) {
+            color: #666;
+            border-color: #e0e0e0;
+        }
+        
+        .language-switcher a:not(.active):hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+        }
+        
+        /* 移动端响应式设计 */
+        @media (max-width: 768px) {
+            nav {
+                position: relative;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 0 0 12px 12px;
+                gap: 0;
+                z-index: 1001;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                margin: 0;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+                margin: 0.25rem 0;
+                text-align: center;
+            }
+            
+            .nav-links a:hover {
+                background-color: rgba(102, 126, 234, 0.1);
+                color: #667eea;
+            }
+            
+            .nav-links a::after {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+                order: 3;
+                padding: 0.5rem;
+                border-radius: 4px;
+                transition: background-color 0.3s ease;
+            }
+            
+            .mobile-menu-toggle:hover {
+                background-color: rgba(102, 126, 234, 0.1);
+            }
+            
+            .language-switcher {
+                order: 2;
+                margin-left: auto;
+                margin-right: 1rem;
+            }
+            
+            .language-switcher a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
+            
+            .logo {
+                order: 1;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .logo {
+                font-size: 1.4rem;
+            }
+            
+            .language-switcher {
+                gap: 0.25rem;
+            }
+            
+            .language-switcher a {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.8rem;
+            }
+            
+            .mobile-menu-toggle {
+                font-size: 1.3rem;
+                padding: 0.4rem;
+            }
+            
+            .nav-links {
+                padding: 0.75rem;
+            }
+            
+            .nav-links a {
+                padding: 0.875rem;
+                font-size: 0.95rem;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .language-switcher a {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.75rem;
+            }
+            
+            .mobile-menu-toggle {
+                font-size: 1.2rem;
+            }
+        }
+        
+        
+        main {
+            margin-top: 80px;
+            padding: 2rem 0;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+        }
+        
+        .features {
+            background: white;
+            padding: 4rem 0;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .pricing {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 4rem 0;
+            margin: 2rem 0;
+            border-radius: 20px;
+            color: white;
+        }
+        
+        .pricing h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .pricing-card.featured {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #ff6b6b;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .price-period {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #667eea;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">ETranslate</a>
+            <ul class="nav-links">
+                <li><a href="#features">功能特色</a></li>
+                <li><a href="#how-it-works">使用方式</a></li>
+                <li><a href="#pricing">定价方案</a></li>
+                <li><a href="support.html">技术支持</a></li>
+                <li><a href="privacy.html">隐私政策</a></li>
+            </ul>
+            <div class="language-switcher">
+                <a href="index.html" class="active">中文</a>
+                <a href="index-en.html">English</a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">☰</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>ETranslate</h1>
+                <p><strong>E</strong>asy <strong>Translate</strong> - 突破复制限制，一键框选翻译</p>
+                <p style="font-size: 1rem; margin-top: 1rem; opacity: 0.8;">当软件界面、网页、PDF 等地方的文字无法复制时，ETranslate 让翻译变得前所未有的简单</p>
+                <a href="#features" class="cta-button">立即体验</a>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2>核心优势</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>框选翻译</h3>
+                        <p>突破复制限制，一键框选任意区域进行翻译，支持软件界面、网页、PDF等无法复制的文字</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>极简操作</h3>
+                        <p>快捷键 + 框选 = 即时翻译，无需切换应用，毫秒级响应，提升工作效率</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h3>多语言支持</h3>
+                        <p>支持20+种语言的智能识别和翻译，包括中文、英文、日文、韩文等主流语言</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3>智能引擎</h3>
+                        <p>集成Apple、Google、Microsoft、OpenAI、DeepSeek等7大翻译引擎，智能切换</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📖</div>
+                        <h3>双语学习</h3>
+                        <p>逐行对照显示原文和译文，支持语音朗读，助力语言学习和发音练习</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>隐私保护</h3>
+                        <p>本地翻译优先，数据不离开设备，API密钥安全存储，保护用户隐私</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" style="background: #f8f9fa;">
+            <div class="container">
+                <h2>使用场景</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h3>学习外语</h3>
+                        <p>框选外语软件菜单、网页内容、PDF文档进行翻译，双语对照模式助力语言学习</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💼</div>
+                        <h3>工作场景</h3>
+                        <p>快速翻译技术文档、API文档、邮件内容、会议材料，提升工作效率</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌐</div>
+                        <h3>日常使用</h3>
+                        <p>翻译社交媒体内容、新闻文章、商品描述、旅游信息，让语言不再是障碍</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="pricing">
+            <div class="container">
+                <h2>订阅计划</h2>
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 3rem; opacity: 0.9;">让翻译变得简单，让语言不再是障碍</p>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>免费试用</h3>
+                        <div class="price">3天</div>
+                        <div class="price-period">全功能体验</div>
+                        <p>体验框选翻译、多语言支持、语音朗读等所有功能</p>
+                    </div>
+                    <div class="pricing-card featured">
+                        <h3>月度订阅</h3>
+                        <div class="price">¥2.99</div>
+                        <div class="price-period">每月</div>
+                        <p>无限制框选翻译，7大智能引擎，隐私保护</p>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>年度订阅</h3>
+                        <div class="price">¥29.99</div>
+                        <div class="price-period">每年</div>
+                        <p>最超值选择，节省17%，工作学习利器</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="support.html">技术支持</a>
+                <a href="privacy.html">隐私政策</a>
+                <a href="mailto:dabufan@gmail.com">联系我们</a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 1.1rem; font-weight: 600;">当其他翻译软件还在要求你复制粘贴时，ETranslate 已经让你一键框选翻译了。</p>
+            <p>&copy; 2025 ETranslate. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuToggle && navLinks) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    
+                    // 切换菜单图标
+                    if (navLinks.classList.contains('active')) {
+                        mobileMenuToggle.innerHTML = '✕';
+                    } else {
+                        mobileMenuToggle.innerHTML = '☰';
+                    }
+                });
+                
+                // 点击菜单项后关闭移动端菜单
+                const menuItems = navLinks.querySelectorAll('a');
+                menuItems.forEach(item => {
+                    item.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                        mobileMenuToggle.innerHTML = '☰';
+                    });
+                });
+            }
+            
+            // 平滑滚动到锚点
+            const anchorLinks = document.querySelectorAll('a[href^="#"]');
+            anchorLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

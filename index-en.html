@@ -598,14 +598,20 @@
             }
             
             .cta-button, .download-button {
-                display: block;
-                margin: 0.5rem auto;
-                width: 200px;
+                display: inline-block;
+                width: 48%;
+                margin: 0.5rem 1%;
                 text-align: center;
+                font-size: 0.9rem;
+                padding: 0.8rem 1rem;
             }
             
-            .download-button {
-                margin-left: 0;
+            .hero-buttons {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
+                margin-top: 2rem;
             }
             
             .features-grid {
@@ -642,8 +648,10 @@
                 <h1>ETranslate</h1>
                 <p><strong>E</strong>asy <strong>Translate</strong> - Break through copy restrictions, translate with one-click selection</p>
                 <p style="font-size: 1rem; margin-top: 1rem; opacity: 0.8;">When text in software interfaces, web pages, PDFs cannot be copied, ETranslate makes translation incredibly simple</p>
-                <a href="#features" class="cta-button">Learn More</a>
-                <a href="https://apps.apple.com/app/easytranslate/id6753140295" class="download-button" target="_blank">Download App</a>
+                <div class="hero-buttons">
+                    <a href="#features" class="cta-button">Learn More</a>
+                    <a href="https://apps.apple.com/app/easytranslate/id6753140295" class="download-button" target="_blank">Download App</a>
+                </div>
             </div>
         </section>
 

@@ -223,6 +223,91 @@
             color: #667eea;
         }
         
+        /* 悬浮名片样式 */
+        .floating-card {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+            max-width: 280px;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .floating-card h4 {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .floating-card p {
+            margin: 0 0 12px 0;
+            font-size: 12px;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        .floating-card .links {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        
+        .floating-card .links a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .floating-card .links a:hover {
+            color: #5a6fd8;
+        }
+        
+        .floating-card .links a::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background: #667eea;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+        
+        @media (max-width: 768px) {
+            .floating-card {
+                bottom: 15px;
+                right: 15px;
+                max-width: 250px;
+                padding: 12px 15px;
+            }
+            
+            .floating-card h4 {
+                font-size: 13px;
+            }
+            
+            .floating-card p {
+                font-size: 11px;
+            }
+            
+            .floating-card .links a {
+                font-size: 11px;
+            }
+        }
+        
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -411,5 +496,15 @@
             <p>&copy; 2025 ETranslate. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- 悬浮名片 -->
+    <div class="floating-card">
+        <h4>Xinq Lee</h4>
+        <p>独立开发者</p>
+        <div class="links">
+            <a href="https://babydu.vercel.app/" target="_blank">主页</a>
+            <a href="https://x.com/leexinq" target="_blank">X</a>
+        </div>
+    </div>
 </body>
 </html>

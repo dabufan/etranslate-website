@@ -262,68 +262,55 @@
             color: #667eea;
         }
         
-        /* 悬浮名片样式 */
+        /* 悬浮名片样式 - 精确复制ecopy网站 */
         .floating-card {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
             border-radius: 12px;
-            padding: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             z-index: 1000;
-            max-width: 280px;
-            transition: all 0.3s ease;
-        }
-        
-        .floating-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            max-width: 200px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
         
         .floating-card h4 {
             margin: 0 0 8px 0;
             font-size: 14px;
             font-weight: 600;
-            color: #333;
+            color: #24292e;
         }
         
         .floating-card p {
             margin: 0 0 12px 0;
             font-size: 12px;
-            color: #666;
+            color: #586069;
             line-height: 1.4;
         }
         
-        .floating-card .links {
+        .floating-card-links {
             display: flex;
-            gap: 12px;
+            gap: 8px;
             align-items: center;
         }
         
-        .floating-card .links a {
-            color: #667eea;
+        .floating-card-links a {
+            background: #f6f8fa;
+            border: 1px solid #d1d5da;
+            border-radius: 4px;
+            padding: 2px 6px;
+            color: #0366d6;
             text-decoration: none;
             font-size: 12px;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: background-color 0.2s ease;
         }
         
-        .floating-card .links a:hover {
-            color: #5a6fd8;
-        }
-        
-        .floating-card .links a::before {
-            content: "";
-            display: inline-block;
-            width: 4px;
-            height: 4px;
-            background: #667eea;
-            border-radius: 50%;
-            margin-right: 6px;
-            vertical-align: middle;
+        .floating-card-links a:hover {
+            background: #e1e4e8;
         }
         
         @media (max-width: 768px) {
@@ -332,18 +319,6 @@
                 right: 15px;
                 max-width: 250px;
                 padding: 12px 15px;
-            }
-            
-            .floating-card h4 {
-                font-size: 13px;
-            }
-            
-            .floating-card p {
-                font-size: 11px;
-            }
-            
-            .floating-card .links a {
-                font-size: 11px;
             }
         }
         
@@ -636,9 +611,9 @@
     <div class="floating-card">
         <h4>Xinq Lee</h4>
         <p>Independent Developer</p>
-        <div class="links">
-            <a href="https://babydu.vercel.app/" target="_blank">Home</a>
+        <div class="floating-card-links">
             <a href="https://x.com/leexinq" target="_blank">X</a>
+            <a href="https://babydu.vercel.app/" target="_blank">Home</a>
         </div>
     </div>
 

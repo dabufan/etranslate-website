@@ -492,7 +492,10 @@
                         src="Etranslate.mp4" 
                         title="Etranslate 产品演示"
                         controls 
+                        autoplay
+                        muted
                         loop
+                        playsinline
                         preload="metadata">
                         您的浏览器不支持视频播放。
                     </video>
@@ -606,6 +609,32 @@
             <a href="https://x.com/leexinq" target="_blank">X</a>
             <a href="https://www.babydu.cn" target="_blank">主页</a>
         </div>
-    </div>
-</body>
-</html>
+    <script>
+        // 视频自动播放和用户交互处理
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('video');
+            
+            if (video) {
+                // 尝试自动播放
+                video.play().catch(function(error) {
+                    console.log('自动播放失败:', error);
+                });
+                
+                // 用户点击视频时取消静音
+                video.addEventListener('click', function() {
+                    if (video.muted) {
+                        video.muted = false;
+                        video.play();
+                    }
+                });
+                
+                // 用户与页面交互后尝试取消静音
+                document.addEventListener('click', function() {
+                    if (video.muted && video.paused) {
+                        video.muted = false;
+                        video.play();
+                    }
+                }, { once: true });
+            }
+        });
+    </script>

@@ -684,7 +684,10 @@
                         src="Etranslate.mp4" 
                         title="Etranslate Product Demo"
                         controls 
+                        autoplay
+                        muted
                         loop
+                        playsinline
                         preload="metadata">
                         Your browser does not support video playback.
                     </video>
@@ -798,11 +801,36 @@
             <a href="https://x.com/leexinq" target="_blank">X</a>
             <a href="https://www.babydu.cn" target="_blank">Home</a>
         </div>
-    </div>
-
     <script>
-        // Mobile menu toggle
+        // Mobile menu toggle and video autoplay
         document.addEventListener('DOMContentLoaded', function() {
+            // 视频自动播放和用户交互处理
+            const video = document.querySelector('video');
+            
+            if (video) {
+                // 尝试自动播放
+                video.play().catch(function(error) {
+                    console.log('Autoplay failed:', error);
+                });
+                
+                // 用户点击视频时取消静音
+                video.addEventListener('click', function() {
+                    if (video.muted) {
+                        video.muted = false;
+                        video.play();
+                    }
+                });
+                
+                // 用户与页面交互后尝试取消静音
+                document.addEventListener('click', function() {
+                    if (video.muted && video.paused) {
+                        video.muted = false;
+                        video.play();
+                    }
+                }, { once: true });
+            }
+            
+            // Mobile menu toggle
             const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
             const navLinks = document.querySelector('.nav-links');
             

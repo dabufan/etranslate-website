@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etranslate - Make Translation Simple</title>
+    
+    <!-- 网站图标 -->
+    <link rel="icon" type="image/png" sizes="32x32" href="icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
+    
+    <!-- Open Graph 社交媒体分享 -->
+    <meta property="og:title" content="Etranslate - Make Translation Simple">
+    <meta property="og:description" content="Break through copy restrictions, translate with one-click selection">
+    <meta property="og:image" content="icon.png">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Etranslate - Make Translation Simple">
+    <meta name="twitter:description" content="Break through copy restrictions, translate with one-click selection">
+    <meta name="twitter:image" content="icon.png">
     <style>
         * {
             margin: 0;
@@ -53,10 +70,12 @@
             gap: 0.5rem;
         }
         
-        .logo::before {
-            content: "🌍";
-            font-size: 1.5rem;
+        .logo img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
         }
+        
         
         .nav-links {
             display: flex;
@@ -647,7 +666,10 @@
 <body>
     <header>
         <nav class="container">
-            <a href="#" class="logo">Etranslate</a>
+            <a href="#" class="logo">
+                <img src="icon.png" alt="Etranslate Logo">
+                Etranslate
+            </a>
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#pricing">Pricing</a></li>

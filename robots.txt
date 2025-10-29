@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+
+# 允许所有搜索引擎抓取
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+# 禁止抓取的文件类型
+Disallow: *.mp4
+Disallow: *.mov
+Disallow: *.avi
+
+# 站点地图位置
+Sitemap: https://etranslate.app/sitemap.xml
+
+# 爬取延迟（可选）
+Crawl-delay: 1
